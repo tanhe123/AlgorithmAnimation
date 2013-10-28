@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import SortAlgorithm.BubbleSort;
 import SortAlgorithm.ImprovedQuickSort;
 import SortAlgorithm.InsertSort;
+import SortAlgorithm.MergeSort;
 import SortAlgorithm.QuickSort;
 import SortAlgorithm.SelectionSort;
 import SortAlgorithm.ShellSort;
@@ -116,7 +117,8 @@ public class Sorter implements Runnable{
 				new SelectionSort(), 
 				new ShellSort(),
 				new QuickSort(),
-				new ImprovedQuickSort()	
+				new ImprovedQuickSort(),
+				new MergeSort()
 		};
 		
 		// 将所有的算法添加到映射表
