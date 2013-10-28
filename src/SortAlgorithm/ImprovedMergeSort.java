@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class ImprovedMergeSort extends Sort {
 	private static final int THRESHOLD = 10;
 	
-    public static <T> void ToImprovecMergeSort(T[] data, Comparator<? super T> c) {
+    public static <T> void ToImprovedMergeSort(T[] data, Comparator<? super T> c) {
         //int[] temp=new int[data.length];
     	Object[] temp = new Object[data.length];
         mergeSort(data,temp,0,data.length-1, c);
