@@ -29,6 +29,6 @@ public class InsertSort extends Sort{
 	}
 	
 	public String getName() {
-		return "InsertSort";
+		return "插入排序";
 	}
 }

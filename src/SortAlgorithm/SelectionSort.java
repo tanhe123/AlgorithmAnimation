@@ -24,6 +24,6 @@ public class SelectionSort extends Sort{
 	}
 	
 	public String getName() {
-		return "SelectionSort";
+		return "选择排序";
 	}
 }

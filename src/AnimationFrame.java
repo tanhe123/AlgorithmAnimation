@@ -90,10 +90,10 @@ public class AnimationFrame extends JFrame{
 		selectPanel.add(combox);
 		
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		//setTitle("AnimationFrame");
+		setTitle("算法演示程序");
 		new Thread(sorter).start();
 	}
-	
+			
 	private Sorter sorter;
 	
 	private static final int DEFAULT_WIDTH = 500;

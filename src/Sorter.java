@@ -7,7 +7,9 @@ import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
 
 import SortAlgorithm.BubbleSort;
+import SortAlgorithm.ImprovedQuickSort;
 import SortAlgorithm.InsertSort;
+import SortAlgorithm.QuickSort;
 import SortAlgorithm.SelectionSort;
 import SortAlgorithm.ShellSort;
 import SortAlgorithm.Sort;
@@ -45,6 +47,7 @@ public class Sorter implements Runnable{
 	
 	public void stop() {
 		//TODO: sflejxs
+		run = false;
 		Thread.currentThread().interrupt();
 		/*values = new Double[this.length];
 		for (int i=0; i<values.length; i++)
@@ -103,19 +106,25 @@ public class Sorter implements Runnable{
 	
 	// 算法列表
 	public static HashMap<String, Integer> hashAlgorithm = new HashMap<String, Integer>(); 
-	public static Sort algorithms[] = {
-			new BubbleSort(),
-			new InsertSort(),
-			new SelectionSort(), 
-			new ShellSort()
-	};
+	public static Sort[] algorithms;
 	
 	static {
-		sortAlgorithm = algorithms[0];
+		// 将所有的排序算法添加到数组
+		algorithms = new Sort[] {
+				new BubbleSort(),
+				new InsertSort(),
+				new SelectionSort(), 
+				new ShellSort(),
+				new QuickSort(),
+				new ImprovedQuickSort()	
+		};
 		
-		hashAlgorithm.put("BubbleSort", 0);
-		hashAlgorithm.put("InsertSort", 1);
-		hashAlgorithm.put("SelectionSort", 2);
-		hashAlgorithm.put("ShellSort", 3);
+		// 将所有的算法添加到映射表
+		for (int i=0; i<algorithms.length; i++) {
+			hashAlgorithm.put(algorithms[i].getName(), i);
+		}
+		
+		// 设置默认的排序算法
+		sortAlgorithm = algorithms[0];
 	}
 }

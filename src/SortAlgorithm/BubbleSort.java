@@ -18,6 +18,6 @@ public class BubbleSort extends Sort {
 	}
 	
 	public String getName() {
-		return "BubbleSort";
+		return "冒泡排序";
 	}
 }

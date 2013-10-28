@@ -28,6 +28,6 @@ public class ShellSort extends Sort {
 	}
 	
 	public String getName() {
-		return "ShellSort";
+		return "希尔排序";
 	}
 }
