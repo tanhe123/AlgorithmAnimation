@@ -7,6 +7,7 @@ import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
 
 import SortAlgorithm.BubbleSort;
+import SortAlgorithm.HeapSort;
 import SortAlgorithm.ImprovedMergeSort;
 import SortAlgorithm.ImprovedQuickSort;
 import SortAlgorithm.InsertSort;
@@ -120,7 +121,8 @@ public class Sorter implements Runnable{
 				new QuickSort(),
 				new ImprovedQuickSort(),
 				new MergeSort(),
-				new ImprovedMergeSort()
+				new ImprovedMergeSort(),
+				new HeapSort()
 		};
 		
 		// 将所有的算法添加到映射表
