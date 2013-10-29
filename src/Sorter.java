@@ -32,6 +32,7 @@ public class Sorter implements Runnable{
 		this.component = comp;
 		this.run = false;
 		this.gate = new Semaphore(1);
+		this.end = false;
 	}
 	
 	public boolean setAlgorhm(int index) {
@@ -51,7 +52,8 @@ public class Sorter implements Runnable{
 	public void stop() {
 		//TODO: sflejxs
 		run = false;
-		Thread.currentThread().interrupt();
+		end = true;
+		gate.release();
 		/*values = new Double[this.length];
 		for (int i=0; i<values.length; i++)
 			values[i] = new Double(Math.random());
@@ -74,12 +76,13 @@ public class Sorter implements Runnable{
 		this.length = length;
 	}
 	
-	public void run() {
+	public synchronized void run() {
 		Comparator<Double> comp = new Comparator<Double>() {
 			public int compare(Double i1, Double i2) {
 				component.setValues(values, i1, i2);
 				try {
-					if(run) Thread.sleep(DELAY);
+					if(end) Thread.interrupted();
+					else if(run) Thread.sleep(DELAY);
 					else gate.acquire();
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
@@ -94,7 +97,7 @@ public class Sorter implements Runnable{
 		System.out.println(sortAlgorithm.getName());
 		
 		component.setValues(values, null, null);
-		JOptionPane.showMessageDialog(null, "排序完毕");
+		if(!end) JOptionPane.showMessageDialog(null, "排序完毕");
 	}
 	
 	private Double[] values;
@@ -103,6 +106,7 @@ public class Sorter implements Runnable{
 	private boolean run;
 	private Semaphore gate;
 	private static Sort sortAlgorithm;
+	private boolean end;
 	
 	private static final int DELAY = 5;
 	private static int length = 200;

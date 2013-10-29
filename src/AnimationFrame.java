@@ -74,6 +74,13 @@ public class AnimationFrame extends JFrame{
 				
 				sorter.stop();
 				sorter.setAlgorhm(algorithmName);
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				
 				sorter = new Sorter(comp);
 				new Thread(sorter).start();
 			}
