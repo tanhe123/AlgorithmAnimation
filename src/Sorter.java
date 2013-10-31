@@ -51,16 +51,9 @@ public class Sorter implements Runnable{
 	}
 	
 	public void stop() {
-		//TODO: sflejxs
 		run = false;
 		end = true;
 		gate.release();
-		/*values = new Double[this.length];
-		for (int i=0; i<values.length; i++)
-			values[i] = new Double(Math.random());
-				
-		this.run = false;
-		this.gate = new Semaphore(1);*/
 	}
 	
 	public void setRun() {
