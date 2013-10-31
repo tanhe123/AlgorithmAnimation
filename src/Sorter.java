@@ -1,4 +1,5 @@
 import java.awt.Component;
+import java.awt.EventQueue;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -78,8 +79,14 @@ public class Sorter implements Runnable{
 	
 	public synchronized void run() {
 		Comparator<Double> comp = new Comparator<Double>() {
-			public int compare(Double i1, Double i2) {
-				component.setValues(values, i1, i2);
+			public int compare(final Double i1, final Double i2) {
+				// 这里invokeLater写应该挺合适的
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						component.setValues(values, i1, i2);
+					}
+				});
+								
 				try {
 					if(end) Thread.interrupted();
 					else if(run) Thread.sleep(DELAY);
